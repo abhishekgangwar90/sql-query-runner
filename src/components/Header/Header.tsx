@@ -9,24 +9,28 @@ import { ButtonVariant } from "@components/Button/Button";
 import { APP_CONFIG } from "@config/appConfig";
 
 function Header() {
+  const [showMenu, setShowMenu] = React.useState(false);
+
   const renderLogoSection = (): JSX.Element => {
     return (
-      <Link to="/" className="flex cursor-pointer items-center">
-        <img
-          alt="logo-img"
-          className="w-10 h-10 mx-2"
-          src={APP_CONFIG.headerConfig.logo}
-        />
-        <h1 className="text-xl text-main font-semibold text-wrap">
-          {APP_CONFIG.headerConfig.title}
-        </h1>
-      </Link>
+      <div className="flex justify-between">
+        <Link to="/" className="flex cursor-pointer items-center">
+          <img
+            alt="logo-img"
+            className="w-10 h-10 mx-2"
+            src={APP_CONFIG.headerConfig.logo}
+          />
+          <h1 className="text-xl text-main font-semibold text-wrap">
+            {APP_CONFIG.headerConfig.title}
+          </h1>
+        </Link>
+      </div>
     );
   };
 
   const renderNavSection = () => {
     return (
-      <nav>
+      <nav className="hidden 2xl:block">
         {APP_CONFIG.headerConfig.nagivation.map((nav) => {
           return (
             <Link
@@ -44,12 +48,12 @@ function Header() {
 
   const renderActionSection = () => {
     return (
-      <div>
+      <div className="hidden md:block">
         {APP_CONFIG.headerConfig.actions.map((button) => {
           return (
             <Button
               key={button.id}
-              className="rounded-full uppercase"
+              className="rounded-full uppercase px-6"
               variant={button.variant as ButtonVariant}
             >
               {button.text}

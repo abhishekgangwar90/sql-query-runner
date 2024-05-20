@@ -6,7 +6,7 @@ import Header from "@components/Header";
 
 function Layout() {
   return (
-    <main className="bg-white">
+    <main className="bg-white flex flex-col">
       <Header />
       <Outlet />
     </main>

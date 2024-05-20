@@ -37,7 +37,26 @@
   background-color: var(--primary-color-dark);
 }
 
+.button-contained-inverted {
+  background-color: var(--white);
+  color: var(--primary-color-main);
+  border: 1px solid white;
+}
+
+.button-contained-inverted:hover {
+  background-color: var(--white);
+}
+
 .button-outlined {
   color: var(--primary-color-main);
   border: 1px solid var(--primary-color-main);
+}
+
+.button-outline-inverted {
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.background-primary {
+  background-color: var(--primary-color-main);
 }
