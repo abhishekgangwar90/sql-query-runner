@@ -53,6 +53,6 @@ export const APP_CONFIG = {
     description:
       "Experience the ultimate platform for running SQL queries and visualizing your data effortlessly. Empower your decisions with intuitive data insights.",
     creativeId:
-      "https://ik.imagekit.io/efnbfldkm/tr:w-300,h-300/SQL%20Query%20runner/illustration.svg?updatedAt=1716229632968",
+      "https://ik.imagekit.io/efnbfldkm/tr:w-300,h-300/SQL%20Query%20runner/illustration.svg",
   },
 };
