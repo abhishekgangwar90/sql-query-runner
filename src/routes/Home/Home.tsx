@@ -2,7 +2,7 @@ import Button from "@components/Button";
 import { APP_CONFIG } from "@config/appConfig";
 import React from "react";
 
-export default function Home() {
+function Home() {
   const { title, subTitle, description } = APP_CONFIG.homePageConfig;
 
   const renderDetailsSection = () => {
@@ -46,3 +46,5 @@ export default function Home() {
     </section>
   );
 }
+
+export default React.memo(Home);
