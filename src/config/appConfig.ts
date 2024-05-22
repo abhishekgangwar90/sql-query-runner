@@ -1,37 +1,39 @@
 export const APP_CONFIG = {
   headerConfig: {
-    title: "SQL Query Runner",
-    logo: "https://ik.imagekit.io/efnbfldkm/tr:w-80,h-80/SQL%20Query%20runner/logo.png",
+    title: "Data Visualizer",
+    logo: "https://ik.imagekit.io/efnbfldkm/SQL%20Query%20runner/database-icon.svg?updatedAt=1716284247976",
+    logoWhite:
+      "https://ik.imagekit.io/efnbfldkm/SQL%20Query%20runner/database-icon-white.svg",
     nagivation: [
       {
         id: 1,
         title: "Home",
         path: "/",
+        iconName: "HOME",
       },
       {
         id: 2,
         title: "Features",
         path: "/",
+        iconName: "FEATURES",
       },
       {
         id: 3,
         title: "Pricing",
         path: "/",
+        iconName: "PRICING",
       },
       {
         id: 4,
         title: "Documentation",
         path: "/",
-      },
-      {
-        id: 5,
-        title: "SQL Query Runner",
-        path: "/query-runner",
+        iconName: "DOCUMENTATION",
       },
       {
         id: 6,
         title: "Resources",
         path: "/",
+        iconName: "RESOURCES",
       },
     ],
     actions: [
@@ -44,6 +46,7 @@ export const APP_CONFIG = {
         id: 2,
         variant: "contained",
         text: "Start For Free",
+        redirectTo: "/query-runner",
       },
     ],
   },

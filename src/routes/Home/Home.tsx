@@ -1,6 +1,11 @@
-import Button from "@components/Button";
-import { APP_CONFIG } from "@config/appConfig";
+// libs
 import React from "react";
+
+// components
+import Button from "@components/Button";
+
+// const
+import { APP_CONFIG } from "@config/appConfig";
 
 function Home() {
   const { title, subTitle, description } = APP_CONFIG.homePageConfig;
@@ -19,15 +24,15 @@ function Home() {
         <div className="my-10">
           <Button
             variant="outlined"
-            className="button-outline-inverted rounded-full px-4"
+            className="button-outline-inverted uppercase rounded-full px-4"
           >
             Contact Support
           </Button>
           <Button
             variant="contained"
-            className="button-contained-inverted rounded-full px-8"
+            className="button-contained-inverted uppercase rounded-full px-8"
           >
-            Try For Free
+            Run SQL Queries For Free
           </Button>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Layout from "@layout/index";
 // routes
 import Home from "@routes/Home";
 import AboutUs from "@routes/AboutUs";
+import SQLQueryRunner from "./SQLQueryRunner";
 
 export const router = createBrowserRouter([
   {
@@ -21,5 +22,9 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
     ],
+  },
+  {
+    path: "/query-runner",
+    element: <SQLQueryRunner />,
   },
 ]);

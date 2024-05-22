@@ -12,6 +12,7 @@ import { IoMdMenu } from "react-icons/io";
 import { APP_CONFIG } from "@config/appConfig";
 
 function Header() {
+  const { logo, title, nagivation, actions } = APP_CONFIG.headerConfig;
   const [showMenu, setShowMenu] = React.useState(false);
 
   const handleMenuIconClick = () => {
@@ -30,21 +31,15 @@ function Header() {
           <IoMdMenu size="1.5rem" className="mr-6" />
         </button>
         <Link to="/" className="flex cursor-pointer items-center">
-          <img
-            alt="logo-img"
-            className="w-10 h-10 mx-2"
-            src={APP_CONFIG.headerConfig.logo}
-          />
-          <h1 className="text-xl text-main font-semibold text-wrap">
-            {APP_CONFIG.headerConfig.title}
-          </h1>
+          <img alt="logo-img" className="w-10 h-10 mx-2" src={logo} />
+          <h1 className="text-xl text-main font-semibold text-wrap">{title}</h1>
         </Link>
       </div>
     );
   };
 
   const renderNavSection = (classes?: string) => {
-    return APP_CONFIG.headerConfig.nagivation.map((nav) => {
+    return nagivation.map((nav) => {
       return (
         <Link
           key={nav.id}
@@ -58,7 +53,7 @@ function Header() {
   };
 
   const renderActionSection = () => {
-    return APP_CONFIG.headerConfig.actions.map((button) => {
+    return actions.map((button) => {
       return (
         <Button
           key={button.id}
@@ -95,11 +90,9 @@ function Header() {
             >
               &times;
             </button>
-            {
-              <nav className="mt-16 p-4 flex flex-col">
-                {renderNavSection("mb-4 truncate")}
-              </nav>
-            }
+            <nav className="mt-16 p-4 flex flex-col">
+              {renderNavSection("mb-4 truncate")}
+            </nav>
           </div>
           <div
             className="flex-1 bg-black bg-opacity-50"
