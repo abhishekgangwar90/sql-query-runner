@@ -24,11 +24,8 @@
       "@layout/*": ["./src/Layout/*"],
       "@config/*": ["./src/config/*"],
       "@routes/*": ["./src/routes/*"],
-      "@components/*": ["./src/components/*"]
-      // "@utils/*": ["./src/utils/*"],
-      // "@icons/*": ["./src/icons/*"],
-      // "@context/*": ["./src/context/*"],
-      // "@redux/*": ["./src/redux/*"]
+      "@components/*": ["./src/components/*"],
+      "@redux/*": ["./src/redux/*"]
     }
   },
   "include": ["src"],

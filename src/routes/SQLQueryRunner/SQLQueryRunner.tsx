@@ -1,13 +1,23 @@
-import Drawer from "@components/Drawer/Drawer";
+// libs
 import React from "react";
+
+// component
+import Drawer from "@components/Drawer";
+
+// widgets
+import ContentHeader from "./widgets/ContentHeader/ContentHeader";
+import Content from "./widgets/Content";
 
 function SQLQueryRunner() {
   return (
-    <main className="flex flex-1 w-full h-full">
-      <aside className="w-1/6 background-primary">
+    <main className="flex flex-1 w-full h-full bg-white justify-center">
+      <aside className="2xl:w-60 w-20 background-primary border-r-2 border-r-gray-400">
         <Drawer />
       </aside>
-      <section className="w-5/6">Content Section</section>
+      <section className="flex flex-col flex-grow">
+        <ContentHeader />
+        <Content />
+      </section>
     </main>
   );
 }

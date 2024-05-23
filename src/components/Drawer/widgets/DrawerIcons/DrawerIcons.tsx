@@ -9,25 +9,29 @@ export default function DrawerIcons({ type }: { type: string }) {
     size: "1.5em",
   };
 
+  const commonStyles = {
+    minWidth: "1.5em",
+  };
+
   switch (type) {
     case "HOME": {
-      return <IoHome {...commonProps} />;
+      return <IoHome style={commonStyles} {...commonProps} />;
     }
 
     case "RESOURCES": {
-      return <GrResources {...commonProps} />;
+      return <GrResources style={commonStyles} {...commonProps} />;
     }
 
     case "PRICING": {
-      return <ImPriceTags {...commonProps} />;
+      return <ImPriceTags style={commonStyles} {...commonProps} />;
     }
 
     case "FEATURES": {
-      return <MdDashboardCustomize {...commonProps} />;
+      return <MdDashboardCustomize style={commonStyles} {...commonProps} />;
     }
 
     case "DOCUMENTATION": {
-      return <FaBook {...commonProps} />;
+      return <FaBook style={commonStyles} {...commonProps} />;
     }
 
     default:
