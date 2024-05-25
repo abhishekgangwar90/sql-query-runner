@@ -36,7 +36,7 @@ export default function List({
       return listData.map((listItem) => {
         return (
           <div
-            className="flex items-center pl-10 py-4 text-sm hover:bg-blue-100 bg-slate-100 border-b border-b-slate-200"
+            className="flex items-center pl-10 py-4 text-sm hover:bg-blue-100 bg-gray-100 border-b border-b-slate-200"
             key={listItem.id}
             onClick={() => onlistItemClick?.(listItem.id, listItem.name)}
           >

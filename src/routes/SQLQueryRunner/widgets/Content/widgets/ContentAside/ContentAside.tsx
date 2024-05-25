@@ -4,7 +4,7 @@ import { getQueryDashboardData } from "@redux/selectors/sqlQuerySelector";
 import List from "@components/List";
 
 // defs
-import { ITable } from "@redux/slices/sqlQuerySlice";
+import { IQueries, ITable } from "@redux/slices/sqlQuerySlice";
 
 // icons
 import { IoChevronForward } from "react-icons/io5";
@@ -14,7 +14,7 @@ import { MdOutlineSchema } from "react-icons/md";
 import { IoMdCopy } from "react-icons/io";
 
 function ContentAside() {
-  const { databases, tables, sampleQueries } = useSelector(
+  const { databases, tables, sampleQueries, history } = useSelector(
     getQueryDashboardData
   );
 
@@ -73,9 +73,9 @@ function ContentAside() {
     );
   };
 
-  const renderSampleQueries = () => {
+  const renderQueryCards = (title: string, data: Array<IQueries>) => {
     const render = () => {
-      return sampleQueries.map(({ query, id }) => {
+      return data.map(({ query, id }) => {
         return (
           <div
             key={id}
@@ -93,7 +93,7 @@ function ContentAside() {
     return (
       <div className="mb-2">
         <List
-          title="Sample Queries"
+          title={title}
           headerIcon={() => <IoChevronForward />}
           isSelected
           render={render}
@@ -106,8 +106,8 @@ function ContentAside() {
     <aside className="flex w-1/5 flex-col p-2 bg-gray-200">
       {renderDatabases()}
       {renderTables()}
-      {renderSampleQueries()}
-      {/* {renderQueryHistory()} */}
+      {renderQueryCards("Sample Queries", sampleQueries)}
+      {renderQueryCards("History", history)}
     </aside>
   );
 }

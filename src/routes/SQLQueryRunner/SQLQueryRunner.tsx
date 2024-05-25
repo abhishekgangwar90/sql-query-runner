@@ -9,12 +9,22 @@ import ContentHeader from "./widgets/ContentHeader/ContentHeader";
 import Content from "./widgets/Content";
 
 function SQLQueryRunner() {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const handleDrawerCLick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <main className="flex flex-1 w-full h-full bg-white justify-center">
-      <aside className="2xl:w-60 w-20 background-primary border-r-2 border-r-gray-400">
-        <Drawer />
+      <aside
+        className={`hidden md:block ${
+          isExpanded ? "w-1/6" : "w-20"
+        } background-primary border-r-2 border-r-gray-400`}
+      >
+        <Drawer isExpanded={isExpanded} onIconClick={handleDrawerCLick} />
       </aside>
-      <section className="flex flex-col flex-grow">
+      <section className="flex flex-col w-5/6 flex-grow">
         <ContentHeader />
         <Content />
       </section>
