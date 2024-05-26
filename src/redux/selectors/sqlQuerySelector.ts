@@ -9,13 +9,13 @@ export const getAllDatabases = ({ queryDashboard }: RootState) => {
 };
 
 export const getAllTables = ({ queryDashboard }: RootState) => {
-  return queryDashboard.tables;
+  return queryDashboard?.tables;
 };
 
 export const getQueryHistory = ({ queryDashboard }: RootState) => {
-  return queryDashboard.history;
+  return queryDashboard?.history;
 };
 
 export const getSampleQueries = ({ queryDashboard }: RootState) => {
-  return queryDashboard.sampleQueries;
+  return queryDashboard?.sampleQueries;
 };

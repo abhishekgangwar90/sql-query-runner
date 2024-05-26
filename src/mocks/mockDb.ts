@@ -30,22 +30,22 @@ export const MOCK_DB_DATA: Array<IDatabase> = [
             type: "string",
           },
           {
-            id: 114,
+            id: 115,
             key: "titleOfCourtesy",
             type: "string",
           },
           {
-            id: 115,
+            id: 116,
             key: "birthDate",
             type: "timestamp",
           },
           {
-            id: 116,
+            id: 117,
             key: "hireDate",
             type: "timestamp",
           },
           {
-            id: 117,
+            id: 118,
             key: "address",
             type: "string",
           },
@@ -132,6 +132,15 @@ export const MOCK_DB_DATA: Array<IDatabase> = [
           },
         ],
         queryHistory: [],
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Store",
+    tables: [
+      {
+        id: 21,
       },
     ],
   },

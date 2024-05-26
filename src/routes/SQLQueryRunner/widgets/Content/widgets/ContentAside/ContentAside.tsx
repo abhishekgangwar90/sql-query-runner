@@ -8,38 +8,19 @@ import { IQueries, ITable } from "@redux/slices/sqlQuerySlice";
 
 // icons
 import { IoChevronForward } from "react-icons/io5";
-import { DiDatabase } from "react-icons/di";
 import { CiViewTable } from "react-icons/ci";
 import { MdOutlineSchema } from "react-icons/md";
 import { IoMdCopy } from "react-icons/io";
+import DatabaseList from "../DatabaseList";
 
 function ContentAside() {
-  const { databases, tables, sampleQueries, history } = useSelector(
-    getQueryDashboardData
-  );
-
-  const renderDatabases = () => {
-    const listData = databases.map(({ id, name }) => ({ id, name }));
-    const headerIcon = () => <IoChevronForward />;
-    const contentIcon = () => <DiDatabase />;
-    return (
-      <div className="mb-2">
-        <List
-          title="Databases"
-          headerIcon={headerIcon}
-          contentIcon={contentIcon}
-          isSelected
-          listData={listData}
-        />
-      </div>
-    );
-  };
+  const { tables, sampleQueries, history } = useSelector(getQueryDashboardData);
 
   const renderTables = () => {
     const render = () => {
       return (
         <div>
-          {tables.map((table: ITable) => {
+          {tables?.map((table: ITable) => {
             const headerIcon = () => <CiViewTable />;
             const listData = table.schema.map(({ id, key }) => ({
               name: key,
@@ -48,8 +29,9 @@ function ContentAside() {
             return (
               <List
                 key={table.id}
-                isSelected={false}
+                // isSelected={false}
                 title={table.name}
+                isDefaultOpen
                 listData={listData}
                 headerIcon={headerIcon}
                 headerClasses="pl-8"
@@ -67,6 +49,7 @@ function ContentAside() {
           title="Tables"
           headerIcon={() => <IoChevronForward />}
           isSelected
+          isDefaultOpen
           render={render}
         />
       </div>
@@ -95,7 +78,8 @@ function ContentAside() {
         <List
           title={title}
           headerIcon={() => <IoChevronForward />}
-          isSelected
+          // isSelected
+          isDefaultOpen
           render={render}
         />
       </div>
@@ -104,10 +88,10 @@ function ContentAside() {
 
   return (
     <aside className="flex w-1/5 flex-col p-2 bg-gray-200">
-      {renderDatabases()}
+      <DatabaseList />
       {renderTables()}
-      {renderQueryCards("Sample Queries", sampleQueries)}
-      {renderQueryCards("History", history)}
+      {/* {renderQueryCards("Sample Queries", sampleQueries)}
+      {renderQueryCards("History", history)} */}
     </aside>
   );
 }

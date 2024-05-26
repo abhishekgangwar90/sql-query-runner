@@ -4,11 +4,12 @@ import React from "react";
 export interface IListData {
   title: string;
   listData?: Array<{ id: number; name: string }>;
-  isSelected: boolean;
+  selectedChildId?: number;
+  isDefaultOpen?: boolean;
   contentIcon?: React.ComponentType;
   headerIcon?: React.ComponentType;
   render?: () => React.ReactNode;
-  onlistItemClick?: (id: number, name: string) => void;
+  onlistItemClick?: (listItem: { id: number; name: string }) => void;
   headerClasses?: string;
 }
 
@@ -20,8 +21,10 @@ export default function List({
   onlistItemClick,
   headerClasses,
   render,
+  isDefaultOpen,
+  selectedChildId,
 }: IListData) {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(isDefaultOpen || false);
 
   const handleHeaderClick = () => {
     setIsExpanded(!isExpanded);
@@ -34,11 +37,14 @@ export default function List({
 
     if (listData?.length) {
       return listData.map((listItem) => {
+        const isSelected = listItem.id === selectedChildId;
         return (
           <div
-            className="flex items-center pl-10 py-4 text-sm hover:bg-blue-100 bg-gray-100 border-b border-b-slate-200"
+            className={`flex items-center pl-10 py-4 text-sm hover:bg-blue-100 bg-gray-100 border-b border-b-slate-200 ${
+              isSelected ? "bg-blue-400 hover:bg-blue-400 text-white" : ""
+            } ${onlistItemClick ? "cursor-pointer" : ""}`}
             key={listItem.id}
-            onClick={() => onlistItemClick?.(listItem.id, listItem.name)}
+            onClick={() => onlistItemClick?.(listItem)}
           >
             {!!ContentIcon && <ContentIcon />}
             <span className="ml-2">{listItem.name}</span>
@@ -53,7 +59,7 @@ export default function List({
     <article className="border-b bg-white border-white rounded-md">
       <header
         className={clsx(
-          `text-md flex items-center cursor-pointer hover:bg-blue-200 p-4`,
+          `text-md flex items-center cursor-pointer hover:bg-blue-200  p-4 rounded-md`,
           headerClasses
         )}
         onClick={handleHeaderClick}

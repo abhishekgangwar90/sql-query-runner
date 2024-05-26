@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // mock DB DATA
 import { MOCK_DB_DATA } from "../../mocks/mockDb";
@@ -30,26 +30,35 @@ export interface IDatabase {
 }
 
 export interface IQuerySliceState {
-  selectedDb: string | null;
-  selectedTable: string | null;
+  selectedDB?: IDatabase;
+  selectedTable?: ITable;
   databases: Array<IDatabase>;
-  tables: Array<ITable>;
-  sampleQueries: Array<IQueries>;
-  history: Array<IQueries>;
+  tables?: Array<ITable>;
+  sampleQueries?: Array<IQueries>;
+  history?: Array<IQueries>;
 }
 
-const INITIAL_STATE = {
-  selectedDB: null,
-  selectedTable: null,
-  selectedQueryResult: [],
+const INITIAL_STATE: IQuerySliceState = {
   databases: MOCK_DB_DATA,
-  tables: MOCK_DB_DATA[0].tables,
-  sampleQueries: MOCK_DB_DATA[0].tables[0].sampleQueries,
-  history: MOCK_DB_DATA[0].tables[0].queryHistory,
 };
 
 const reducer = {
-  setSelectedDB: () => {},
+  setSelectedDB: (
+    state: IQuerySliceState,
+    action: PayloadAction<{ id: number }>
+  ) => {
+    const selectedDB = state.databases.filter(
+      (db) => db.id === action.payload.id
+    )?.[0];
+
+    const tables = selectedDB.tables;
+
+    return {
+      ...state,
+      selectedDB,
+      tables,
+    };
+  },
   setSelectedTable: () => {},
 };
 
