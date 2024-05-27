@@ -9,6 +9,7 @@ export interface IListData {
   contentIcon?: React.ComponentType;
   headerIcon?: React.ComponentType;
   render?: () => React.ReactNode;
+  isDisabled?: boolean;
   onlistItemClick?: (listItem: { id: number; name: string }) => void;
   headerClasses?: string;
 }
@@ -16,6 +17,7 @@ export interface IListData {
 export default function List({
   title,
   listData,
+  isDisabled,
   headerIcon: HeaderIcon,
   contentIcon: ContentIcon,
   onlistItemClick,
@@ -27,7 +29,7 @@ export default function List({
   const [isExpanded, setIsExpanded] = React.useState(isDefaultOpen || false);
 
   const handleHeaderClick = () => {
-    setIsExpanded(!isExpanded);
+    if (!isDisabled) setIsExpanded(!isExpanded);
   };
 
   const renderListData = () => {
@@ -56,10 +58,12 @@ export default function List({
   };
 
   return (
-    <article className="border-b bg-white border-white rounded-md">
+    <article className={`border-b bg-white border-white rounded-md `}>
       <header
         className={clsx(
-          `text-md flex items-center cursor-pointer hover:bg-blue-200  p-4 rounded-md`,
+          `text-md flex items-center cursor-pointer ${
+            isDisabled ? "bg-gray-400 hover:bg-gray-400 cursor-default" : ""
+          } hover:bg-blue-200  p-4 rounded-md `,
           headerClasses
         )}
         onClick={handleHeaderClick}
